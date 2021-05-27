@@ -1,7 +1,7 @@
 <template>
     <header>
-        <h1>Yordan Dobrev</h1>
-        <img class="avatar" src="https://www.pngitem.com/pimgs/m/681-6819175_person-on-computer-logo-clipart-png-download-programmer.png"/>
+        <h1 class="title-header">Blog with Vue.js</h1>
+        <img class="avatar" src="https://vuejs.org/images/logo.png"/>
         <p>Hello, I am Yordan 22 year old. I am Full-Stack Web Developper.</p>
         <hr />
     </header>
@@ -14,6 +14,14 @@ export default {
 </script>
 
 <style scoped>
+    header {
+        background-color: rgb(7, 57, 165);
+    }
+
+    .title-header {
+        color: orange;
+    }
+
     h1, p {
         text-align: center;
         color: white;

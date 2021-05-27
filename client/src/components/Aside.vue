@@ -35,6 +35,7 @@ export default {
     @media only screen and (max-width: 600px) {
         .aside {
             width: 100%;
+            height: 100%;
         }
     }
 </style>
