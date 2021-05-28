@@ -1,7 +1,7 @@
 <template>
     <header>
-        <h1 class="title-header">Blog with Vue.js</h1>
-        <img class="avatar" src="https://vuejs.org/images/logo.png"/>
+        <h1 class="title-header">Vue Blog</h1>
+        <img class="avatar" src="https://miro.medium.com/max/6416/1*7OCwu--TWqVluPMsZdzWKw.png"/>
         <p>Hello, I am Yordan 22 year old. I am Full-Stack Web Developper.</p>
         <hr />
     </header>
@@ -15,7 +15,7 @@ export default {
 
 <style scoped>
     header {
-        background-color: rgb(7, 57, 165);
+        background-color: #55B689;
     }
 
     .title-header {
