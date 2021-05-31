@@ -1,18 +1,27 @@
 <template>
     <div class="details-container">
         <h3>About me</h3>
-        <p>
-            I am a web developer specialized in frontend and backend development. This is my blog, I love to share knowledge with other people.
-        </p>
-        <p>
-            I am a self-taught programmer, I use my free time to learn new things
+        <p v-if="description">
+            {{description}}
         </p>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'AboutDetails'
+    name: "AboutDetails",
+    mounted() {
+        fetch("http://localhost:5000/aboutMe").then(r => r.json())
+        .then(data => {
+            this.description = data[0].description;
+        })
+    },
+
+    data() {
+        return {
+            description: ""
+        }
+    }
 }
 </script>
 

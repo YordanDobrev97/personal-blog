@@ -2,36 +2,31 @@
     <div>
         <h1>Portfolio</h1>
 
-        <div class="projects">
-            <div class="project-card">
-                <img src="https://i.imgur.com/WZLnufW.png" class="img-fluid" alt="">
+        <div v-if="projects.length > 0" class="projects">
+            <div class="project-card" v-for="project in projects" :key="project._id">
+                <img v-bind:src="project.image" class="img-fluid" alt="">
                 <button>
-                    <a target="_blank" href="https://music-fy.netlify.app/">See</a>
+                    <a target="_blank" :href="project.link">See</a>
                 </button>
             </div>
-
-            <div class="project-card">
-                <img src="https://i.ibb.co/tbfdXTP/newlogo.png" class="img-fluid" alt="">
-                <button>
-                    <a target="_blank"  href="https://appmoviess.herokuapp.com/">See</a>
-                </button>
-            </div>
-
-            <div class="project-card">
-                <img src="https://user-images.githubusercontent.com/42092212/100554007-8012cc00-329a-11eb-8425-6b1a1a99c3b4.png" class="img-fluid" alt="">
-                <button>
-                    <a target="_blank"  href="https://github.com/YordanDobrev97/UniBook">See</a>
-                </button>
-            </div>
-
-
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Portfolio'    
+    name: "Portfolio",
+    mounted() {
+        fetch("http://localhost:5000/projects").then(r => r.json())
+        .then(data => {
+            this.projects = data;
+        })
+    },
+    data() {
+        return {
+            projects: []
+        }
+    },
 }
 </script>
 

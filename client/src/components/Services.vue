@@ -2,25 +2,30 @@
     <div class="service-container">
         <h1>Services</h1>
 
-        <div class="services">
-            <div class="service-card">
-                <img class="service-image" src="https://assets.justinmind.com/wp-content/uploads/2020/10/what-is-responsive-design.png"/>
-                <h2>Responsive Design</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores totam officiis nisi tenetur ullam fugiat culpa laborum eos aspernatur, consequuntur deserunt debitis, nemo dolorum. Voluptas natus illum sint unde vitae.</p>
-            </div>
-
-             <div class="service-card">
-                 <img class="service-image" src="https://miro.medium.com/max/1200/1*pE2fOVDikEUwiQJlh4ggzg.jpeg"/>
-                <h2>Web Development</h2>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores totam officiis nisi tenetur ullam fugiat culpa laborum eos aspernatur, consequuntur deserunt debitis, nemo dolorum. Voluptas natus illum sint unde vitae.</p>
-            </div>
+        <div v-if="services.length > 0" class="services">
+            <div class="service-card" v-for="service in services" :key="service._id" >
+                <img class="service-image" :src="service.image"/>
+                <h2>{{service.type}}</h2>
+                <p>{{service.description}}</p>
+            </div>             
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Services'    
+    name: "Services",
+    mounted() {
+        fetch("http://localhost:5000/services").then(r => r.json())
+        .then(data => {
+            this.services = data;
+        })
+    },
+    data() {
+        return {
+            services: []
+        }
+    }  
 }
 </script>
 

@@ -2,30 +2,10 @@
     <div class="tech-stack-container">
         <h3 class="skills">Skills</h3>
 
-        <div class="technologies">
-            <div class="tech">
-                <img src="https://blog.clever-age.com/wp-content/uploads/sites/2/2018/11/logos-vue.js-react.js-FB.jpg" />
+        <div v-if="technologies.length > 0" class="technologies">
+            <div class="tech" v-for="item in technologies" :key="item._id">
+                <img v-bind:src="item.image" />
                 <h4>React.js, Vue.js</h4>
-            </div>
-
-            <div class="tech">
-                <img src="https://miro.medium.com/max/1051/1*q9myzo5Au8OfsaSrCodNmw.png" />
-                <h4>Node & Express.js</h4>
-            </div>
-
-            <div class="tech">
-                <img src="https://paydock.com/wp-content/uploads/2018/04/dotnet_round.png" />
-                <h4>.NET</h4>
-            </div>
-
-            <div class="tech">
-                <img src="https://www.iperiusbackup.net/wp-content/uploads/2016/05/1768.sql_logo.png" />
-                <h4>SQL Server</h4>
-            </div>
-
-            <div class="tech">
-                <img src="https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png" />
-                <h4>MongoDB</h4>
             </div>
         </div>
     </div>
@@ -33,7 +13,18 @@
 
 <script>
 export default {
-    name: 'TechStack'
+    name: "TechStack",
+    mounted() {
+        fetch("http://localhost:5000/skills").then(r => r.json())
+        .then(data => {
+            this.technologies = data;
+        })
+    },
+    data() {
+        return {
+            technologies: []
+        }
+    }
 }
 </script>
 
